@@ -3,6 +3,7 @@ class Solution(object):
         left=0
         right=len(height)-1
         final_area=0
+        #conditon
         while left<right:
             width=right-left
             length=min(height[left],height[right])
