@@ -9,3 +9,5 @@ class Solution(object):
                 count+=freq[prefix-k]
             freq[prefix]=freq.get(prefix,0)+1
         return count
+
+     
