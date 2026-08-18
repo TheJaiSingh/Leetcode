@@ -1,6 +1,6 @@
 class KthLargest(object):
 
-    # 1. Heapify Down - Min Heap
+
     def heapify_down(self, ind):
         n = len(self.heap)
 
@@ -25,7 +25,6 @@ class KthLargest(object):
                 break
 
 
-    # 2. Heapify Up - Min Heap
     def heapify_up(self, ind):
         while ind > 0:
             parent = (ind - 1) // 2
@@ -39,14 +38,12 @@ class KthLargest(object):
                 break
 
 
-    # 3. Insert
     def insert(self, value):
         self.heap.append(value)
 
         self.heapify_up(len(self.heap) - 1)
 
 
-    # 4. Remove Minimum
     def minimum(self):
         minimum = self.heap[0]
 
@@ -59,7 +56,6 @@ class KthLargest(object):
         return minimum
 
 
-    # 5. Constructor
     def __init__(self, k, nums):
         self.k = k
         self.heap = []
@@ -71,7 +67,6 @@ class KthLargest(object):
                 self.minimum()
 
 
-    # 6. Add new number
     def add(self, val):
         self.insert(val)
 
