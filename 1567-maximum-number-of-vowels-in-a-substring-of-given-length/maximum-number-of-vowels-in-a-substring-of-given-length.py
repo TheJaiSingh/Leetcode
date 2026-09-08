@@ -1,14 +1,19 @@
 class Solution(object):
     def maxVowels(self, s, k):
-       vovel="AEIOUaeiou"
-       vovel_count=0
-       maxsum=float("-inf")
-       for right in range(len(s)):
-        if s[right] in vovel:
-            vovel_count+=1
-        if right>=k-1:
-            maxsum=max(maxsum,vovel_count)
-            left=right-k+1
+        count=0
+        vovel="AEIOUaeiou"
+        for i in range(k):
+            if s[i] in vovel:
+                count+=1
+        max_vovel=count
+        left=0
+        for right in range(k,len(s)):
             if s[left] in vovel:
-                vovel_count-=1
-       return maxsum
+                count-=1
+            if s[right] in vovel:
+                count+=1
+            left+=1
+            if count>max_vovel:
+                max_vovel=count
+
+        return max_vovel
