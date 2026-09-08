@@ -12,13 +12,11 @@ class Solution(object):
         if len(freq)==3:
             count+=1
 
-            
-        min_freq=min(freq.values())
         left=0
         for right in range(3,len(s)):
             if s[left] in freq:
                 freq[s[left]]-=1
-                if freq[s[left]] == 0:
+                if freq[s[left]] == 0: # to delete the frist element {'a':0}
                     del freq[s[left]]
 
             if s[right] not in freq:
