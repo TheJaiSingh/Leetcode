@@ -6,8 +6,6 @@ class Solution(object):
                 freq[s1[i]] = 1
             else:
                 freq[s1[i]] += 1
-
-        # sliding window over s2
         window = {}
         left = 0
         for right in range(len(s2)):
@@ -16,14 +14,11 @@ class Solution(object):
             else:
                 window[s2[right]] += 1
 
-            # shrink window if size exceeds len(s1)
             if right - left + 1 > len(s1):
                 window[s2[left]] -= 1
                 if window[s2[left]] == 0:
                     del window[s2[left]]
                 left += 1
-
-            # check if current window matches freq
             if window == freq:
                 return True
 
