@@ -1,17 +1,33 @@
 class Solution(object):
     def characterReplacement(self, s, k):
-        left=0
-        freq={}
-        maxsum=0
-        maxfreq=0
-        for right in range(len(s)):
-            freq[s[right]]=freq.get(s[right],0)+1
-            maxfreq=max(maxfreq,freq[s[right]])
-            while (right-left+1)-maxfreq>k:
-                freq[s[left]]-=1
-                left+=1
-            currentlength=right-left+1
-            maxsum=max(maxsum,currentlength)
-        return maxsum
+        freq = {}
+        
+        left = 0
+        max_count = 0
+        max_length = 0
 
-    
+        for right in range(len(s)):
+
+            if s[right] not in freq:
+                freq[s[right]] = 1
+            else:
+                freq[s[right]] += 1
+
+            max_count = max(max_count, freq[s[right]])
+
+            window_length = right - left + 1
+
+            if window_length - max_count > k:
+                freq[s[left]] -= 1
+
+                if freq[s[left]] == 0:
+                    del freq[s[left]]
+
+                left += 1
+
+            window_length = right - left + 1
+
+            if window_length > max_length:
+                max_length = window_length
+
+        return max_length
