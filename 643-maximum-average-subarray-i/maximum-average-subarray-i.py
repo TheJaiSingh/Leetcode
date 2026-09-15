@@ -1,24 +1,15 @@
 class Solution(object):
     def findMaxAverage(self, nums, k):
-        
-        # First window
-        window_sum = 0
-        
+        windowsum=0
         for i in range(k):
-            window_sum += nums[i]
+            windowsum+=nums[i]
+        maxsum=windowsum
+        left=0
+        for right in range(k,len(nums)):
+            windowsum-=nums[left]
+            windowsum+=nums[right]
+            left+=1
+            maxsum=max(windowsum,maxsum)
+        return float(maxsum)/k
         
-        max_sum = window_sum
         
-        left = 0
-        
-        # Slide the window
-        for right in range(k, len(nums)):
-            
-            window_sum -= nums[left]
-            window_sum += nums[right]
-            
-            left += 1
-            
-            max_sum = max(max_sum, window_sum)
-        
-        return float(max_sum) / k
