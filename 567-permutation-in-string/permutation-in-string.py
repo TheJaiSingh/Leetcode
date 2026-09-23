@@ -14,8 +14,8 @@ class Solution(object):
                 window[s2[right]] = 1
             else:
                 window[s2[right]] += 1
-
-            if right - left + 1 > len(s1):
+            windowlenght=right - left + 1 
+            if windowlenght> len(s1):
                 window[s2[left]] -= 1
                 if window[s2[left]] == 0:
                     del window[s2[left]]
