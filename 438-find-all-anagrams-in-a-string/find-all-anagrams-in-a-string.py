@@ -1,36 +1,29 @@
 class Solution(object):
     def findAnagrams(self, s, p):
-        if len(p)>len(s):
-            return []
         freq={}
-        for i in range(len(p)):
-            if s[i] not in freq:
-                freq[s[i]]=1
+        for right in range(len(p)):
+            if p[right] not in freq:
+                freq[p[right]]=1
             else:
-                freq[s[i]]+=1
-        freq2={}
-        for i in p:
-            if i not in freq2:
-                freq2[i]=1
-            else:
-                freq2[i]+=1
-        output=[]
-        if freq==freq2:
-            output.append(0)
+                freq[p[right]]+=1
+        window={}
         left=0
-        start=len(p)
-        for right in range(start,len(s)):
-            if s[left] in freq:
-                freq[s[left]]-=1
-                if freq[s[left]]==0:
-                    del freq[s[left]]
-            if s[right] not in freq:
-                freq[s[right]]=1
+        output=[]
+        for right in range(len(s)):
+            if s[right] not in window:
+                window[s[right]]=1
             else:
-                freq[s[right]]+=1
-            left+=1
+                window[s[right]]+=1
+            
+            windowlength=right-left+1
+            if windowlength>len(p):
+                window[s[left]]-=1
+                if window[s[left]]==0:
+                    del window[s[left]]
+                left+=1
 
-
-            if freq==freq2:
+            if window==freq:
                 output.append(left)
+
         return output
+        
