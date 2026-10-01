@@ -23,5 +23,3 @@ class Solution(object):
                 else:
                     stack.append(s[i])
         return stack[0]
-
-        
