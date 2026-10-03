@@ -1,0 +1,15 @@
+class Solution(object):
+    def scoreOfParentheses(self, s):
+        stack=[0]
+        for i in range(len(s)):
+            if s[i]=='(':
+                stack.append(0)
+            else:
+                value=stack.pop()
+                if value==0:
+                    value=1
+                else:
+                    value=2*value
+                stack[-1]+=value
+        return stack[0]
+        
