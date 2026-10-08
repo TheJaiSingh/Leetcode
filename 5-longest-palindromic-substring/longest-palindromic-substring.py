@@ -1,18 +1,22 @@
 class Solution(object):
     def longestPalindrome(self, s):
-
-        answer = ""
-
+        if len(s)<=1:
+            return s
+        answer=""
         for i in range(len(s)):
-
-            for j in range(i, len(s)):
-
-                substring = s[i:j+1]
-
-                if substring == substring[::-1]:
-
-                    if len(substring) > len(answer):
-                        answer = substring
-
-        return answer
+            left=i
+            right=i
+            while left>=0 and right<len(s) and s[left]==s[right]:
+                if right-left+1>len(answer):
+                    answer=s[left:right+1]
+                left-=1
+                right+=1
         
+            left=i
+            right=i+1
+            while left>=0 and right<len(s) and s[left]==s[right]:
+                if right-left+1>len(answer):
+                    answer=s[left:right+1]
+                left-=1
+                right+=1
+        return answer
