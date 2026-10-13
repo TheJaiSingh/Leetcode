@@ -1,15 +1,19 @@
 class Solution:
     def countSubstrings(self, s):
-        n = len(s)
-        result = 0
-
-        # Expand around each possible center
-        for center in range(2 * n - 1):
-            left = center // 2
-            right = left + center % 2
-            while left >= 0 and right < n and s[left] == s[right]:
-                result += 1
-                left -= 1
-                right += 1
-
-        return result
+        if len(s)==0:
+            return s
+        count=0
+        for i in range(len(s)):
+            left=i
+            right=i
+            while left>=0 and right<len(s) and s[left]==s[right]:
+                count+=1
+                left-=1
+                right+=1
+            left=i
+            right=i+1
+            while left>=0 and right<len(s) and s[left]==s[right]:
+                count+=1
+                left-=1
+                right+=1
+        return count
