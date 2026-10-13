@@ -1,6 +1,6 @@
 class Solution(object):
     def longestPalindrome(self, s):
-        if len(s)<=1:
+        if len(s)==0:
             return s
         answer=""
         for i in range(len(s)):
@@ -11,7 +11,6 @@ class Solution(object):
                     answer=s[left:right+1]
                 left-=1
                 right+=1
-        
             left=i
             right=i+1
             while left>=0 and right<len(s) and s[left]==s[right]:
