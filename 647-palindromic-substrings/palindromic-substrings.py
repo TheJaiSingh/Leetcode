@@ -1,4 +1,4 @@
-class Solution:
+class Solution(object):
     def countSubstrings(self, s):
         if len(s)==0:
             return s
@@ -10,10 +10,13 @@ class Solution:
                 count+=1
                 left-=1
                 right+=1
+
             left=i
             right=i+1
             while left>=0 and right<len(s) and s[left]==s[right]:
                 count+=1
                 left-=1
                 right+=1
+            
+            
         return count
