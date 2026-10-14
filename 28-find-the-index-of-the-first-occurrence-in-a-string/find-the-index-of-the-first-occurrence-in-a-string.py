@@ -1,6 +1,12 @@
 class Solution(object):
     def strStr(self, haystack, needle):
-        for i in range(len(haystack)-len(needle)+1):
-            if haystack[i:i+len(needle)]==needle:
-                return i
+        m=len(haystack)
+        n=len(needle)
+        for left in range(m-n+1):
+            right=0
+            while right<n and haystack[left+right]==needle[right]:
+                right+=1
+            if right==n:
+                return left
+                break
         return -1
