@@ -8,5 +8,5 @@ class Solution(object):
                 right+=1
             if right==n:
                 return left
-                break
         return -1
+        
