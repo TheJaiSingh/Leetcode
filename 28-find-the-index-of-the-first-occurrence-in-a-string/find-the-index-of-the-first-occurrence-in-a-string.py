@@ -1,12 +1,32 @@
 class Solution(object):
     def strStr(self, haystack, needle):
-        m=len(haystack)
-        n=len(needle)
-        for left in range(m-n+1):
-            right=0
-            while right<n and haystack[left+right]==needle[right]:
-                right+=1
-            if right==n:
-                return left
-        return -1
-        
+        n=len(haystack)
+        m=len(needle)
+        if m==0:
+            return 0
+        lps=[0]*m
+        lenght=0
+        i=1
+        while i<m:
+            if needle[i]==needle[lenght]:
+                lenght+=1
+                lps[i]=lenght
+                i+=1
+            elif lenght>0:
+                lenght=lps[lenght-1]
+            else:
+                lps[i]=0
+                i+=1
+        i=0
+        j=0
+        while i<n:
+            if haystack[i]==needle[j]:
+                i+=1
+                j+=1
+                if j==m:
+                    return i-j
+            elif j>0:
+                j=lps[j-1]
+            else:
+                i+=1
+        return -1            
