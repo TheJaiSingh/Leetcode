@@ -15,8 +15,8 @@ class Solution(object):
                 lps[i]=0
                 i+=1
         
-        longest = lps[n - 1] 
-        pattern_length = n - longest
-        if longest > 0 and n % pattern_length == 0:
-             return True
+        longest=lps[n-1]
+        pattern_lenght=n-longest
+        if longest>0 and n%pattern_lenght==0:
+            return True
         return False
