@@ -5,11 +5,11 @@
 #         self.next = next
 class Solution(object):
     def getDecimalValue(self, head):
-        answer=0
         current=head
+        answer=0
         while current is not None:
-            answer=answer*2+ current.val
+            answer=answer*2+current.val
             current=current.next
         return answer
-        
+
         
